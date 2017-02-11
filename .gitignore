@@ -54,6 +54,12 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
+# secret dotenv environment variables file
+secret*.env
 
+# all files and folder that start with a period
+.*
+.*/
+
+# don't ignore .gitignore
+!.gitignore

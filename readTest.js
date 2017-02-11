@@ -1,6 +1,8 @@
 var SerialPort = require("serialport");
-var port = new SerialPort("/dev/ttyACM0", {
-  baudRate: 9600
+console.log('CONNECTING TO:' + process.env.COM_NAME);
+var port = new SerialPort(process.env.COM_NAME, {
+  baudRate: 9600,
+  parser: SerialPort.parsers.readline("\n")
 });
 
 port.on('open', function() {
@@ -18,5 +20,5 @@ port.on('error', function(err) {
 })
 
 port.on('data', function (data) {
-  console.log('Data: ' + data);
+  console.log(''+data);
 });
