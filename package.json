@@ -1,0 +1,14 @@
+{
+  "name": "serial-test",
+  "version": "0.0.0",
+  "description": "A test bed for the 'serialport' library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arun Kalahasti",
+  "license": "ISC",
+  "dependencies": {
+    "serialport": "^4.0.7"
+  }
+}
