@@ -54,8 +54,8 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# secret dotenv environment variables file
-secret*.env
+# .secret environment variables file
+.secret*.env
 
 # all files and folder that start with a period
 .*

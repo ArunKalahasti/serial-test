@@ -5,20 +5,24 @@ var port = new SerialPort(process.env.COM_NAME, {
   parser: SerialPort.parsers.readline("\n")
 });
 
-port.on('open', function() {
-  port.write('main screen turn on', function(err) {
-    if (err) {
-      return console.log('Error on write: ', err.message);
-    }
-    console.log('message written');
-  });
-});
+port.on('open', showPortOpen);
+port.on('data', showSerialData);
+port.on('close', showPortClose);
+port.on('error', showError);
 
-// open errors will be emitted as an error event 
-port.on('error', function(err) {
-  console.log('Error: ', err.message);
-})
+function showPortOpen() {
+  console.log('[ port open ] - Connection settings: ' + JSON.stringify(port.options));
+}
 
-port.on('data', function (data) {
-  console.log(''+data);
-});
+function showSerialData(data) {
+  console.log('[ SERVER <-- SERIAL ]: ' + data);
+  // console.log('[SENDING  --> SERIAL]: ' + data);
+}
+
+function showPortClose() {
+  console.log('[ port closed ]');
+}
+
+function showError(error) {
+  console.log('[ port error ] - Error: ' + error);
+}
